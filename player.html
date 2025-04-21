@@ -7,7 +7,7 @@
   <!-- Open Graph Tags for sharing -->
   <meta property="og:title" id="og-title" content="Awesome Video on Play Flix!" />
   <meta property="og:description" id="og-description" content="Watch the latest trending video!" />
-  <meta property="og:image" id="og-image" content="https://yourdomain.com/thumb.jpg" />
+  <meta property="og:image" id="og-image" content="https://yourdomain.com/thumb.jpg" />  <!-- Ensure this image URL is correct and accessible -->
   <meta property="og:url" id="og-url" content="https://yourdomain.com/player.html" />
   <meta property="og:type" content="video.other" />
   <meta property="og:video" id="og-video" content="https://yourdomain.com/video.mp4" />
@@ -23,7 +23,7 @@
     const title = params.get("title") || "Play Flix Video";
     const likes = params.get("likes") || "0";
     const videoUrl = params.get("video") || "";
-    const thumbUrl = params.get("thumb") || "https://res.cloudinary.com/dzr6tcagt/image/upload/v1745070085/post/L7xety64ugegkscYQHItoBEXXoK21745070082282.jpg";
+    const thumbUrl = params.get("thumb") || "";
 
     // Update the page title and OG meta tags dynamically
     document.addEventListener("DOMContentLoaded", () => {
@@ -36,7 +36,7 @@
 
       // Inject the video into the page
       document.getElementById("video-container").innerHTML = `
-        <video width="100%" controls>
+        <video width="100%" height="100%" controls>
           <source src="${videoUrl}" type="video/mp4">
           Your browser does not support the video tag.
         </video>
