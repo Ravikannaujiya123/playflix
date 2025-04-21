@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Open Graph Tags for sharing -->
+  <meta property="og:title" id="og-title" content="Awesome Video on Play Flix!" />
+  <meta property="og:description" id="og-description" content="Watch the latest trending video!" />
+  <meta property="og:image" id="og-image" content="https://yourdomain.com/thumb.jpg" />
+  <meta property="og:url" id="og-url" content="https://yourdomain.com/player.html" />
+  <meta property="og:type" content="video.other" />
+  <meta property="og:video" id="og-video" content="https://yourdomain.com/video.mp4" />
+  <meta property="og:video:type" content="video/mp4" />
+  <meta property="og:video:width" content="1280" />
+  <meta property="og:video:height" content="720" />
+
+  <title id="page-title">Loading Video...</title>
+
+  <script>
+    // Read URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get("title") || "Play Flix Video";
+    const likes = params.get("likes") || "0";
+    const videoUrl = params.get("video") || "";
+    const thumbUrl = params.get("thumb") || "";
+
+    // Update the page title and OG meta tags dynamically
+    document.addEventListener("DOMContentLoaded", () => {
+      document.title = title;
+      document.getElementById("og-title").content = title;
+      document.getElementById("og-description").content = "❤️ Liked by " + likes + " users!";
+      document.getElementById("og-image").content = thumbUrl;
+      document.getElementById("og-url").content = window.location.href;
+      document.getElementById("og-video").content = videoUrl;
+
+      // Inject the video into the page
+      document.getElementById("video-container").innerHTML = `
+        <video width="100%" controls>
+          <source src="${videoUrl}" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      `;
+
+      // Set the title text
+      document.getElementById("video-title").innerText = title;
+    });
+  </script>
+</head>
+<body>
+  <h1 id="video-title">Loading...</h1>
+  <div id="video-container"></div>
+</body>
+</html>
